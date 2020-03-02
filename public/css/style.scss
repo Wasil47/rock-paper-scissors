@@ -1,0 +1,115 @@
+
+/* Variables */
+$background-color: #303841;
+$text-color: #3D9970;
+$rock: url(../images/rock.png);
+$paper: url(../images/paper.png);
+$scissors: url(../images/scissors.png);
+// $game-height: 600px;
+// $game-width: 600px;
+$game-height: 25em;
+$game-width: 25em;
+$grid-class: ra, pa, sa, AIpoints, AIpick, playerPoints, playerPick, rp, pp, sp;
+
+
+/* Device Breakpoints px - < 576 < 768 < 992 < 1200 */
+$break-small: 576px;
+$break-medium: 768px;
+$break-large: 992px;
+$break-xlarge: 1200px;
+/* mixins */
+@mixin respond-to($media) {
+  @if $media == small {
+    @media (min-width: $break-small) { @content; }
+  } 
+  @else if $media == medium {
+    @media (min-width: $break-medium) and (min-height: $break-small) { @content; }
+  }
+  @else if $media == large {
+    @media (min-width: $break-large) and (min-height: $break-small) { @content; }
+  }
+  @else if $media == xlarge {
+    @media (min-width: $break-xlarge) and (min-height: $break-medium) { @content; }
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // border: solid 1px black;
+}
+
+html {
+  box-sizing: border-box;
+  color: $text-color;
+  /* default document font size = 16px, 1rem = 16px, 100% = 16px, 62.5% = 10px */
+  font-size: 100%;
+  /* Device Breakpoints px - < 576 < 768 < 992 < 1200 */
+  @include respond-to(small) { font-size: 120%; }
+  @include respond-to(medium) { font-size: 125%; }
+  @include respond-to(large) { font-size: 130%; }
+  @include respond-to(xlarge) { font-size: 135%; }
+
+  line-height: 1;
+  scroll-behavior: smooth;  
+}
+
+body {
+  background: $background-color;
+}
+#rock-paper-scissors {
+  position: relative;
+  height: $game-height;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  @include respond-to(small) { 
+    width: $game-width;
+  }
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "ra pa sa"
+    "AIpoints AIpick ."
+    "playerPoints playerPick ."
+    "rp pp sp";
+
+    @each $class in $grid-class {
+      .#{$class} {
+        grid-area: $class;
+      }
+    }
+    .rock {
+      background: $rock;
+    }
+    .paper {
+      background: $paper;
+    }
+    .scissors {
+      background: $scissors;
+    }
+    .AIpoints, .AIpick {
+      color: #9c3131;
+    }
+    .AIpoints, .AIpick, .playerPoints, .playerPick {
+      font-size: 1.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+    .rock, .paper, .scissors, .AIpick, .playerPick {
+      font-size: 4em;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      transition: all 1s;
+    }
+}

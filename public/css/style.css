@@ -1,0 +1,173 @@
+/* Variables */
+/* Device Breakpoints px - < 576 < 768 < 992 < 1200 */
+/* mixins */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #3D9970;
+  /* default document font size = 16px, 1rem = 16px, 100% = 16px, 62.5% = 10px */
+  font-size: 100%;
+  /* Device Breakpoints px - < 576 < 768 < 992 < 1200 */
+  line-height: 1;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 120%;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 576px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+@media (min-width: 992px) and (min-height: 576px) {
+  html {
+    font-size: 130%;
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 768px) {
+  html {
+    font-size: 135%;
+  }
+}
+
+body {
+  background: #303841;
+}
+
+#rock-paper-scissors {
+  position: relative;
+  height: 25em;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-areas: "ra pa sa" "AIpoints AIpick ." "playerPoints playerPick ." "rp pp sp";
+}
+
+@media (min-width: 576px) {
+  #rock-paper-scissors {
+    width: 25em;
+  }
+}
+
+#rock-paper-scissors .ra {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: ra;
+}
+
+#rock-paper-scissors .pa {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: pa;
+}
+
+#rock-paper-scissors .sa {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: sa;
+}
+
+#rock-paper-scissors .AIpoints {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: AIpoints;
+}
+
+#rock-paper-scissors .AIpick {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: AIpick;
+}
+
+#rock-paper-scissors .playerPoints {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: playerPoints;
+}
+
+#rock-paper-scissors .playerPick {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: playerPick;
+}
+
+#rock-paper-scissors .rp {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: rp;
+}
+
+#rock-paper-scissors .pp {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+  grid-area: pp;
+}
+
+#rock-paper-scissors .sp {
+  -ms-grid-row: 4;
+  -ms-grid-column: 3;
+  grid-area: sp;
+}
+
+#rock-paper-scissors .rock {
+  background: url(../images/rock.png);
+}
+
+#rock-paper-scissors .paper {
+  background: url(../images/paper.png);
+}
+
+#rock-paper-scissors .scissors {
+  background: url(../images/scissors.png);
+}
+
+#rock-paper-scissors .AIpoints, #rock-paper-scissors .AIpick {
+  color: #9c3131;
+}
+
+#rock-paper-scissors .AIpoints, #rock-paper-scissors .AIpick, #rock-paper-scissors .playerPoints, #rock-paper-scissors .playerPick {
+  font-size: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+
+#rock-paper-scissors .rock, #rock-paper-scissors .paper, #rock-paper-scissors .scissors, #rock-paper-scissors .AIpick, #rock-paper-scissors .playerPick {
+  font-size: 4em;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+/*# sourceMappingURL=style.css.map */
