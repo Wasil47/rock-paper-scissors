@@ -5,12 +5,9 @@ $text-color: #3D9970;
 $rock: url(../images/rock.png);
 $paper: url(../images/paper.png);
 $scissors: url(../images/scissors.png);
-// $game-height: 600px;
-// $game-width: 600px;
 $game-height: 25em;
 $game-width: 25em;
 $grid-class: ra, pa, sa, AIpoints, AIpick, playerPoints, playerPick, rp, pp, sp;
-
 
 /* Device Breakpoints px - < 576 < 768 < 992 < 1200 */
 $break-small: 576px;
@@ -50,11 +47,9 @@ html {
   @include respond-to(medium) { font-size: 125%; }
   @include respond-to(large) { font-size: 130%; }
   @include respond-to(xlarge) { font-size: 135%; }
-
   line-height: 1;
   scroll-behavior: smooth;  
 }
-
 body {
   background: $background-color;
 }

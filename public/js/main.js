@@ -1,6 +1,5 @@
 const classArr = document.querySelectorAll("#rock-paper-scissors > div");
 
-
 // Create Array with ALL Class Names
 const arrClassNames = (arr) => {
   const classNames = [];
@@ -36,32 +35,30 @@ const classObj = (key, value) => {
   return obj;
 };
 
+// Create myObj including all div class {className: DOMelement}
 const classNames = arrClassNames(classArr);
 const elements = selectElements(classNames);
 const myObj = classObj(classNames, elements);
 
-
-////////////
-const test = document.getElementById("rock-paper-scissors");
-///////////////
-
+// Game code start here
 const pickPosX = myObj.playerPick.offsetLeft;
 const pickPosY = myObj.playerPick.clientHeight;
-const arrPlayer = ['rp', 'pp', 'sp'];
-const arrAI = ['ra', 'pa', 'sa'];
+const arrPlayer = ['rp', 'pp', 'sp']; // players picks (class names)
+const arrAI = ['ra', 'pa', 'sa']; // AI picks (class names)
 let playerPoints = 0;
 let AIpoints = 0;
 
 let allowAnim = true;
 
+// Game Brain
 const movePicked = (e) => {   
-    myObj[e].addEventListener('click', ()=>{            
+    myObj[e].addEventListener('click', ()=>{   
       const ranP = arrAI[Math.floor(Math.random()*3)]; // RandomPick
       const moveX = pickPosX - myObj[e].offsetLeft;
       const moveY = -pickPosY;
       const AImoveX = pickPosX - myObj[ranP].offsetLeft;    
   
-      if (allowAnim) {
+      if (allowAnim) { // one move at a time
         allowAnim = false;
         myObj[e].style.transform = `translate(${moveX}px, ${moveY}px)`;
         myObj[ranP].style.transform = `translate(${AImoveX}px, ${-moveY}px)`;
@@ -80,21 +77,13 @@ const movePicked = (e) => {
         };
         myObj.playerPick.innerText = playerPoints;
         myObj.AIpick.innerText = AIpoints;
-        setTimeout(()=>{
+        setTimeout(()=>{ // back to start position
           myObj[e].style.transform = `translate(0px)`;
           myObj[ranP].style.transform = `translate(0px)`;
-          allowAnim = true;          
+          allowAnim = true; // let next move
         }, 1300);
       };
     }); 
 };
 
-const moveBack = (e) => {    
-  myObj[e].addEventListener('animationend', ()=>{
-    console.log('Animation end!');
-    myObj[e].style.transform = `translate(0px, 0px)`;
-  });
-};
-
 arrPlayer.forEach(movePicked);
-arrPlayer.forEach(moveBack);
